@@ -1,0 +1,71 @@
+{
+  "experiment": "02_long2short_methods",
+  "model_merging": {
+    "dist_short": 10.235,
+    "dist_long": 10.183,
+    "dist_hybrid": 10.026,
+    "hybrid_best_or_tied": true
+  },
+  "shortest_rejection_sampling": {
+    "solve_rate": 1.0,
+    "mean_correct_len": 1769.6,
+    "mean_shortest_correct_len": 1129.0,
+    "compression_vs_mean_correct": 0.362
+  },
+  "dpo": {
+    "pairs": 59,
+    "chosen_win_rate": 1.0,
+    "mean_bt_loss": 0.5122,
+    "interpretation": "Pairs teach 'prefer shortest-correct'; win-rate 1.0 by brevity reward \u2014 the point is the SFT/DPO data recipe, not a learned policy here."
+  },
+  "long2short_rl_frontier": [
+    {
+      "lambda": 0.0,
+      "acc": 1.0,
+      "mean_tokens": 1722.0,
+      "acc_per_1k": 0.581
+    },
+    {
+      "lambda": 0.1,
+      "acc": 1.0,
+      "mean_tokens": 1129.0,
+      "acc_per_1k": 0.886
+    },
+    {
+      "lambda": 0.3,
+      "acc": 1.0,
+      "mean_tokens": 1129.0,
+      "acc_per_1k": 0.886
+    },
+    {
+      "lambda": 0.6,
+      "acc": 1.0,
+      "mean_tokens": 1129.0,
+      "acc_per_1k": 0.886
+    },
+    {
+      "lambda": 1.0,
+      "acc": 1.0,
+      "mean_tokens": 1129.0,
+      "acc_per_1k": 0.886
+    },
+    {
+      "lambda": 1.5,
+      "acc": 1.0,
+      "mean_tokens": 1129.0,
+      "acc_per_1k": 0.886
+    }
+  ],
+  "best_efficiency": {
+    "lambda": 0.1,
+    "acc": 1.0,
+    "mean_tokens": 1129.0,
+    "acc_per_1k": 0.886
+  },
+  "claims_verified": {
+    "merge_hybrid_reasonable": true,
+    "srs_compresses_20pct_plus": true,
+    "rl_pareto_exists": true
+  },
+  "paper_ref": "Kimi k1.5 Sec.2.4 + Fig.7; RS-DPO arXiv:2402.10038; DPO Rafailov et al. 2024"
+}

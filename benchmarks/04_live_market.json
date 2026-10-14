@@ -1,0 +1,24 @@
+{
+  "experiment": "04_live_market_reasoning",
+  "snapshot": {
+    "timestamp_utc": "2026-10-14T15:35:53Z",
+    "BTC_USD": 81813.0,
+    "ETH_USD": 2436.88,
+    "USD_EUR": 0.89326,
+    "sources": [
+      "coingecko",
+      "frankfurter"
+    ],
+    "hash": "5bb6b3002eb5"
+  },
+  "n_questions": 10,
+  "both_correct": 10,
+  "accuracy_long": 1.0,
+  "accuracy_short": 1.0,
+  "mean_words_long": 50.8,
+  "mean_words_short": 14.0,
+  "compression": 0.724,
+  "accuracy_retention": 1.0,
+  "claim_verified": true,
+  "interpretation": "On live 2026 market numbers, short rationales keep 100% correctness with >40% fewer words \u2014 Long2Short transfers from MATH to live financial reasoning."
+}

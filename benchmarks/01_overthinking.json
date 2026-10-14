@@ -1,0 +1,71 @@
+{
+  "experiment": "01_overthinking_curve",
+  "data_source": "hf:HuggingFaceH4/MATH-500",
+  "n_problems": 500,
+  "rl_iterations": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "accuracy": [
+    0.5524,
+    0.608,
+    0.6715,
+    0.7172,
+    0.7354,
+    0.7799,
+    0.8291,
+    0.862,
+    0.8999
+  ],
+  "mean_tokens": [
+    748.8,
+    1096.4,
+    1369.0,
+    1619.9,
+    1987.3,
+    2259.2,
+    2497.4,
+    2894.3,
+    3142.5
+  ],
+  "pearson_iter_acc": {
+    "r": 0.9946,
+    "p": 3.736957124912992e-08
+  },
+  "pearson_tokens_acc": {
+    "r": 0.9924,
+    "p": 1.254587870525454e-07
+  },
+  "spearman_tokens_acc": {
+    "rho": 1.0,
+    "p": 0.0
+  },
+  "tokens_per_acc_point": [
+    13.55,
+    18.03,
+    20.39,
+    22.59,
+    27.02,
+    28.97,
+    30.12,
+    33.58,
+    34.92
+  ],
+  "level_mean_solution_words": {
+    "1": 37.97674418604651,
+    "2": 61.4,
+    "3": 73.73333333333333,
+    "4": 83.7265625,
+    "5": 132.67910447761193
+  },
+  "claim_verified": true,
+  "interpretation": "Accuracy and length rise together (r>0.9). Tokens-per-point grows: classic overthinking \u2014 extra thinking buys accuracy but at rising cost. Difficulty-conditioning shows length is not uniformly justified.",
+  "paper_ref": "Kimi k1.5 Fig.5; Stop-Overthinking survey arXiv:2503.16419"
+}

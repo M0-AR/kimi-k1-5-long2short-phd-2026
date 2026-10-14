@@ -1,0 +1,12 @@
+services:
+  kimi-long2short:
+    build: .
+    container_name: kimi-k1-5-repro
+    volumes:
+      - ./benchmarks:/work/benchmarks
+      - ./data:/work/data
+    environment:
+      - PYTHONPATH=/work
+      - HF_HUB_OFFLINE=0
+      - SEED=42
+    command: python3 experiments/run_all.py
