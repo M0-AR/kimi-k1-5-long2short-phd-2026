@@ -1,0 +1,11 @@
+{
+  "timestamp_utc": "2026-10-14T15:35:53Z",
+  "BTC_USD": 81813.0,
+  "ETH_USD": 2436.88,
+  "USD_EUR": 0.89326,
+  "sources": [
+    "coingecko",
+    "frankfurter"
+  ],
+  "hash": "5bb6b3002eb5"
+}

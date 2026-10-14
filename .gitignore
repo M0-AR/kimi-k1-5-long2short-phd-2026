@@ -2,8 +2,5 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-benchmarks/*.png
-!benchmarks/.gitkeep
-data/*.json
-!data/.gitkeep
 downloads/
+# Keep figures + live snapshot tracked so README/preview render on GitHub
