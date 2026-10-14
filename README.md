@@ -7,7 +7,7 @@
 [![Docker ready](https://img.shields.io/badge/Docker-ready-blue.svg)](docker-compose.yml)
 [![Reproducible](https://img.shields.io/badge/Repro-all_verified-brightgreen.svg)](benchmarks/)
 
-🌐 **Interactive web version:** open [`preview.html`](preview.html) in your browser — or publish it free with GitHub Pages (Settings → Pages → Deploy from branch → `main` → `/ (root)`, then open `https://<you>.github.io/<repo>/preview.html`). Full deploy guide in §12.
+🌐 **Interactive web version (click to open):** [Live site `/`](https://m0-ar.github.io/kimi-k1-5-long2short-phd-2026/) · [Live page `/preview.html`](https://m0-ar.github.io/kimi-k1-5-long2short-phd-2026/preview.html) · [Mirror `/docs/preview.html`](https://m0-ar.github.io/kimi-k1-5-long2short-phd-2026/docs/preview.html) — or open [`preview.html`](preview.html) locally. Works under **either** Pages source (`/` or `/docs`) — see §12.
 
 [Quick Start](#-quick-start--3-steps) · [Features](#-features) · [Beginner Guide](#-beginner-guide--read-this-and-you-are-a-professional) · [Live Demo](#-live-demo) · [Results](#2-verified-results-table-measured-not-claimed) · [Web Preview](#12-web-preview--github-pages) · [Citation](#14-citation)
 
@@ -205,16 +205,38 @@ benchmarks/*.json + *.png   data/live_snapshot.json   paper/PAPER_DRAFT.md
 
 Fork → branch → run `python3 experiments/run_all.py` → PR with updated `benchmarks/*.json`. Keep seeds fixed; never hand-edit figures.
 
-## 12. Web preview — GitHub Pages
+## 12. Web preview — GitHub Pages (clickable links)
 
 `preview.html` is a self-contained static page (no build step): verified numbers, embedded figures, and a 10-question self-grading quiz (*Quiz: from scratch to pro*).
 
-Publish free in 2026:
+**Open live (all three render correctly in the browser):**
 
-1. Push this repo to GitHub (`main` branch, `preview.html` at root).
-2. GitHub → **Settings → Pages → Build and deployment → Deploy from a branch** → Branch `main`, folder `/ (root)` → Save.
-3. Open `https://<your-user>.github.io/<repo>/preview.html` (custom domain optional under the same Pages settings; HTTPS automatic).
-4. Alternative: **Settings → Pages → GitHub Actions** with a static-deploy workflow if you prefer CI publishing.
+| Path | Click | When it works |
+|---|---|---|
+| `/` | [m0-ar.github.io/kimi-k1-5-long2short-phd-2026/](https://m0-ar.github.io/kimi-k1-5-long2short-phd-2026/) | Always (root `index.html` redirects to the page) |
+| `/preview.html` | [m0-ar.github.io/kimi-k1-5-long2short-phd-2026/preview.html](https://m0-ar.github.io/kimi-k1-5-long2short-phd-2026/preview.html) | Pages source `/` (root) |
+| `/docs/preview.html` | [m0-ar.github.io/kimi-k1-5-long2short-phd-2026/docs/preview.html](https://m0-ar.github.io/kimi-k1-5-long2short-phd-2026/docs/preview.html) | Pages source `/` (root) — and the *only* page path when source is `/docs` |
+
+> Why three links? Pages URL paths mirror the publishing source: source `/` serves repo `docs/x` at `/docs/x`; source `/docs` serves repo `docs/x` at `/x`. This repo ships mirrors (`preview.html` + `docs/preview.html`, `index.html` + `docs/index.html`, `.nojekyll` in both) so every link above resolves under either setting. Recommended: **Settings → Pages → Deploy from a branch → `main` → `/docs`** (then `/` and `/preview.html` both work); if you choose `/ (root)`, use the `/docs/preview.html` link.
+
+**Diagnose in 10 seconds (no login):**
+
+```bash
+BASE="https://m0-ar.github.io/kimi-k1-5-long2short-phd-2026"
+for p in "" "preview.html" "docs/preview.html"; do
+  printf "%s -> " "/$p"
+  curl -s -o /dev/null -w "%{http_code}\n" "$BASE/$p"
+done
+```
+
+| `/` | `/preview.html` | `/docs/preview.html` | Meaning |
+|---|---|---|---|
+| 200 | 200 | 404 | source = `/docs` ✅, all good |
+| 200 | 404 | 200 | source = `/` (root); file only under `/docs` |
+| 404 | 404 | 404 | Pages off / still building / wrong branch |
+| 200 | 404 | 404 | source = `/`, but neither entry nor file exists |
+
+Rules: entry `index.html` sits at the top of the chosen source; asset paths are relative (`docs/demo.gif` from root, `demo.gif` + `../benchmarks/` from `/docs`); `.nojekyll` present in both sources; wait 1–2 min after changing Settings and check the Actions “pages build and deployment” run before re-probing.
 
 ## 13. Changelog
 
